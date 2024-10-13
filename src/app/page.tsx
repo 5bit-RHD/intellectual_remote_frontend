@@ -2,7 +2,7 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material"
 import React, { useState } from "react"
 import * as Styled from "./Page.styles"
-import { AudioPredict, CommandFiles, Commands, Trains } from "@/widgets"
+import { AudioPredict, Commands } from "@/widgets"
 import { Button } from "@/shared/ui"
 
 export default function Home() {
