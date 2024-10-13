@@ -19,8 +19,8 @@ export default function Home() {
           fontSize={"medium"}
           fontWeight={"medium"}
         >
-          Наш продукт позволяет определить команду по аудиофайлу. Мы обрабатываем файл нейронкой, удаляем шумы, делаем
-          Wav2Vec и загоняем в LLM. Ну и дальше, что там по тизеру
+          Команда 5bits разработала инновационное решение для точного распознавания голосовых команд с динамическим
+          добавлением новых классов.
         </Typography>
         <Button sx={{ width: "300px" }} variant={"outlined"} color={"additional"} onClick={goToCommands}>
           Определить команду
