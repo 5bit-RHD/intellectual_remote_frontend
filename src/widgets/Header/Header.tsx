@@ -48,7 +48,7 @@ export const Header = () => {
           <Styled.TextItem
             href={"/presentation"}
             sx={{ border: activeItem === "/presentation" ? "2px solid #FFF" : "none" }}
-            onClick={() => handleChangePages("/about")}
+            onClick={() => handleChangePages("/presentation")}
           >
             <Typography variant={"body1"} fontSize={"medium"} fontWeight={"medium"}>
               ПРЕЗЕНТАЦИЯ

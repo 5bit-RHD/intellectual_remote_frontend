@@ -12,7 +12,7 @@ export const AddCommandDiv = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
-  alignItems: "center",
+  alignItems: "flex-start",
   gap: theme.spacing(5),
 }))
 

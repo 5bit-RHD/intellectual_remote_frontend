@@ -1,14 +1,15 @@
 "use client"
 import React, { ChangeEvent, useEffect, useState } from "react"
 import * as Styled from "./ui/Commands.styled"
-import { Command, CommandsTable, fetchCommands } from "@/entities/Command"
+import { addCommandClass, Command, CommandsTable, fetchCommands } from "@/entities/Command"
 import { AxiosResponse } from "axios"
 import { Button, TextField } from "@/shared/ui"
 import { RequestMessage } from "@/shared/assets/RequestMessage/RequestMessage"
 
 export const Commands = () => {
   const [commands, setCommands] = useState<Command[]>([])
-  const [newCommand, setNewCommand] = useState<string | null>(null)
+  const [commandClass, setCommandClass] = useState("")
+  const [newCommand, setNewCommand] = useState<string>("")
   const [error, setError] = useState(false)
   const [text, setText] = useState("")
 
@@ -30,8 +31,20 @@ export const Commands = () => {
     setNewCommand(x.target.value)
   }
 
+  function handleChangeCommandClass(x: ChangeEvent<HTMLInputElement>) {
+    setCommandClass(x.target.value)
+  }
+
   function sendRequest() {
-    console.log("send")
+    addCommandClass(newCommand as string, commandClass)
+      .then(res => {
+        setText("Успешно")
+        setError(false)
+      })
+      .catch(err => {
+        setText("Ошибка")
+        setError(true)
+      })
   }
 
   return (
@@ -44,8 +57,20 @@ export const Commands = () => {
           label={"Введите новую команду"}
           value={newCommand}
         />
+        <TextField
+          onChange={handleChangeCommandClass}
+          color={"#FFF"}
+          variant={"outlined"}
+          label={"Введите класс команды"}
+          value={commandClass}
+        />
         <Styled.AddCommandRequest>
-          <Button onClick={sendRequest} variant={"outlined"} color={"additional"}>
+          <Button
+            disabled={!(commandClass.length > 0 && newCommand.length > 0)}
+            onClick={sendRequest}
+            variant={"outlined"}
+            color={"additional"}
+          >
             Добавить команду
           </Button>
           {text.length > 0 && <RequestMessage error={error} text={text} />}
